@@ -3327,6 +3327,12 @@ static lily_class *build_class(lily_symtab *symtab, const char *name,
     result->generic_count = generic_count;
     result->flags |= CLS_IS_BUILTIN;
 
+#ifdef OCTEON_DEBUG
+    /// I've a feeling someone's getting a bad id somewhere.
+    fprintf(stderr, "build_class: giving id %d to name %s (ptr %p).\n",
+            result->id, name, result);
+#endif
+
     return result;
 }
 
@@ -3343,6 +3349,12 @@ static lily_class *build_special(lily_symtab *symtab, const char *name,
 
     symtab->active_module->class_chain = result->next;
     symtab->next_class_id--;
+
+#ifdef OCTEON_DEBUG
+    /// I've a feeling someone's getting a bad id somewhere.
+    fprintf(stderr, "build_special: giving id %d to name %s (ptr %p).\n",
+            result->id, name, result);
+#endif
 
     result->next = symtab->old_class_chain;
     symtab->old_class_chain = result;
