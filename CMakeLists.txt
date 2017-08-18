@@ -14,6 +14,10 @@ else()
         set(CMAKE_C_FLAGS      "${CMAKE_C_FLAGS} -g3")
     endif(DEBUG)
 
+    if(OCTEON_DEBUG)
+        set(CMAKE_C_FLAGS      "${CMAKE_C_FLAGS} -DOCTEON_DEBUG")
+    endif(OCTEON_DEBUG)
+
     if(NOT QUICK_BUILD)
         set(CMAKE_C_FLAGS      "${CMAKE_C_FLAGS} -O2")
     endif(NOT QUICK_BUILD)

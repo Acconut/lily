@@ -361,6 +361,11 @@ void lily_mb_add_fmt_va(lily_msgbuf *msgbuf, const char *fmt,
             if (c == 'T') {
                 lily_type *type = va_arg(var_args, lily_type *);
                 add_type(msgbuf, type);
+#ifdef OCTEON_DEBUG
+/// Octeon: String seems to be confused for ? a lot. Are they somehow the same?
+                snprintf(buffer, 128, " (%p)", (void *)type);
+                lily_mb_add(msgbuf, buffer);
+#endif
             }
 
             text_start = i+1;
