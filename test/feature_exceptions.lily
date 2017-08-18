@@ -7,7 +7,7 @@ t.scope(__file__)
 t.interpret("Verify catch of custom exception.",
     """
     class Error(code: Integer, message: String) < Exception(message)    {
-        public var @code = code
+        var @code = code
     }
 
     try: {

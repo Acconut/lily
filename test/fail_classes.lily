@@ -23,8 +23,8 @@ t.interpret_for_error("Redeclare a class property.",
     """,
     """\
     class Test {
-        public var @abc = 10
-        public define abc {
+        var @abc = 10
+        define abc {
 
         }
     }
@@ -50,7 +50,7 @@ t.interpret_for_error("Class property self initialization.",
     """,
     """\
     class Point {
-        public var @x: Integer = @x
+        var @x: Integer = @x
     }
     """)
 
@@ -61,10 +61,10 @@ t.interpret_for_error("Redeclare property as method.",
     """,
     """\
     class Test {
-        public define abc {
+        define abc {
 
         }
-        public var @abc = 10
+        var @abc = 10
     }
     """)
 
@@ -74,7 +74,7 @@ t.interpret_for_error("Declare property twice.",
         from test\/[subinterp]:1:\
     """,
     """\
-    class ABC { public var @a = 1 public var @a = 1 }
+    class ABC { var @a = 1 var @a = 1 }
     """)
 
 t.interpret_for_error("Attempt to close construct parameters.",
@@ -84,7 +84,7 @@ t.interpret_for_error("Attempt to close construct parameters.",
     """,
     """\
     class Example(a: Integer) {
-        public define f {
+        define f {
             var v = a
         }
     }
@@ -97,8 +97,8 @@ t.interpret_for_error("Attempt to close self in a constructor.",
     """,
     """\
     class Example {
-        public var @a = 1
-        public var @b = (|| @a += 1 )
+        var @a = 1
+        var @b = (|| @a += 1 )
     }
     """)
 
@@ -198,7 +198,7 @@ t.interpret_for_error("Attempt to declare class property without @.",
         from test\/[subinterp]:1:\
     """,
     """\
-    class ABC { public var a: integer }
+    class ABC { var a: integer }
     """)
 
 t.interpret_for_error("Attempt to return 'self' outside a class method.",
@@ -217,7 +217,7 @@ t.interpret_for_error("Attempt to use @name outside a class.",
     """,
     """\
     class Test[A](name: String) {
-        public var @name = name
+        var @name = name
     }
 
     var v = Test("abc").@name
@@ -281,8 +281,8 @@ t.interpret_for_error("Forbid self.property",
     """,
     """\
     class Point(x: Integer, y: Integer) {
-        public var @x = x
-        public var @y = self.x
+        var @x = x
+        var @y = self.x
     }
     """)
 
@@ -302,26 +302,4 @@ t.interpret_for_error("Wrong arg count with class method.",
     """,
     """\
     String.ends_with("a", "b", "c")
-    """)
-
-t.interpret_for_error("Class var without scope.",
-    """\
-    SyntaxError: Class var declaration must start with a scope.\n    \
-        from test\/[subinterp]:2:\
-    """,
-    """\
-    class Test {
-        var @a = 1
-    }
-    """)
-
-t.interpret_for_error("Class method without scope.",
-    """\
-    SyntaxError: Class method declaration must start with a scope.\n    \
-        from test\/[subinterp]:2:\
-    """,
-    """\
-    class Test {
-        define f {}
-    }
     """)

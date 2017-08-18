@@ -43,7 +43,7 @@ t.interpret("Verify that generics are restored after dynaload.",
     {
         Some(1).is_none()
 
-        public define abc(key: A): Test[A, B]
+        define abc(key: A): Test[A, B]
         {
             return self
         }
@@ -54,9 +54,9 @@ t.interpret("Verify that generics are restored after dynaload.",
 t.interpret("Verify property can be used after dynaload.",
     """
     class Test {
-        public var @contents = [1, 2, 3]
+        var @contents = [1, 2, 3]
 
-        public define check(source: String) {
+        define check(source: String) {
             var f = File.open(source, "r")
             var lines: List[String] = []
 

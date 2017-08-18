@@ -113,8 +113,8 @@ t.interpret("Verify closure over a function parameter.",
 t.interpret("Verify closing over of locals in a constructor.",
     """
     class Example {
-        public var @x = (|z: Integer| (|| z * z )() )
-        public define k(a: Integer): Integer {
+        var @x = (|z: Integer| (|| z * z )() )
+        define k(a: Integer): Integer {
             return @x(a)
         }
     }

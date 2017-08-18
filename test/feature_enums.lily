@@ -7,7 +7,7 @@ t.scope(__file__)
 t.interpret("Verify basics of generic enums.",
     """
     class Test {
-        public var @value = None
+        var @value = None
     }
 
     define check_assigning {
