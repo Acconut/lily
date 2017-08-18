@@ -1,0 +1,214 @@
+
+#12 test check_line_numbers.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Cannot assign type 'String' to type 'Integer'.
+    from check_line_numbers.lily:7:`
+Received:
+``
+#22 test interp_plus.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Invalid operation: String + String.
+    from interp_plus.lily:11:`
+Received:
+`SyntaxError: Invalid operation: ? + ?.
+    from interp_plus.lily:11:`
+#25 test invalid_eq.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Invalid operation: List[Integer] == List[String].
+    from invalid_eq.lily:9:`
+Received:
+`SyntaxError: Invalid operation: List[Integer] == List[?].
+    from invalid_eq.lily:9:`
+#28 test invalid_tuple_subscript.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Index 3 is out of range for Tuple[Integer, String].
+    from invalid_tuple_subscript.lily:6:`
+Received:
+`SyntaxError: Index 3 is out of range for Tuple[Integer, ?].
+    from invalid_tuple_subscript.lily:6:`
+#37 test subscript_out_of_range.lily !!!FAILED!!!
+
+Expected:
+`IndexError: Subscript index -50 is out of range.
+Traceback:
+    from subscript_out_of_range.lily:7: in __main__`
+Received:
+`SyntaxError: Cannot subscript type '?'.
+    from subscript_out_of_range.lily:7:`
+#48 test wrong_arg_type.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Argument #1 to f is invalid:
+Expected Type: Integer
+Received Type: String
+    from wrong_arg_type.lily:8:`
+Received:
+``
+#103 test trigger_keyerror.lily !!!FAILED!!!
+
+Expected:
+`KeyError: "b"
+Traceback:
+    from trigger_keyerror.lily:9: in __main__`
+Received:
+`SyntaxError: Type 'Dynamic' is not a valid hash key.
+    from trigger_keyerror.lily:7:`
+#112 test generics_default_only_resolved.lily !!!FAILED!!!
+
+Expected:
+`SyntaxError: Argument #2 to f is invalid:
+Expected Type: Integer
+Received Type: String
+    from generics_default_only_resolved.lily:14:`
+Received:
+`SyntaxError: Argument #2 to f is invalid:
+Expected Type: Integer
+Received Type: Dynamic
+    from generics_default_only_resolved.lily:14:`
+#175 test check_basics.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_basics.lily:8:`
+#176 test check_boolean_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_boolean_methods.lily:8:`
+#177 test check_byte_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_byte_methods.lily:8:`
+#178 test check_bytestring_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_bytestring_methods.lily:8:`
+#179 test check_concat.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_concat.lily:8:`
+#181 test check_double_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_double_methods.lily:8:`
+#182 test check_hash_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_hash_methods.lily:8:`
+#183 test check_integer_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_integer_methods.lily:8:`
+#184 test check_list_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_list_methods.lily:8:`
+#185 test check_option_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_option_methods.lily:8:`
+#186 test check_result_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_result_methods.lily:8:`
+#187 test check_string_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Class ? has no method or property named format.
+    from check_string_methods.lily:8:`
+#191 test check_class_basics.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Invalid operation: String != ?.
+    from check_class_basics.lily:35:`
+#193 test check_class_generics.lily !!!CRASHED!!!
+
+#195 test check_inheriting_shorthand.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Invalid operation: String != ?.
+    from check_inheriting_shorthand.lily:6:`
+#196 test class_match_methods.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`lily(42895) in free(): bogus pointer (double free?) 0x100010100`
+#200 test prop_subscript_assign.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Type 'Dynamic' is not a valid hash key.
+    from prop_subscript_assign.lily:2:`
+#208 test close_loop_with_inner_closure.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Cannot infer type of 'e'.
+    from close_loop_with_inner_closure.lily:8:`
+#209 test close_nonglobal_loop_var.lily !!!CRASHED!!!
+
+#213 test close_transform_accounting.lily !!!FAILED!!!
+
+Expected:
+``
+Received:
+`SyntaxError: Invalid operation: String == ?.
+    from close_transform_accounting.lily:16:`
+^CTraceback (most recent call last):
+  File "pre-commit-hook.py", line 101, in <module>
+    process_test_dir('test' + os.sep + 'pass')
+  File "pre-commit-hook.py", line 98, in process_test_dir
+    run_test(options, dirpath, filepath)
+  File "pre-commit-hook.py", line 48, in run_test
+    (subp_stdout, subp_stderr) = subp.communicate()
+  File "/usr/local/lib/python2.7/subprocess.py", line 479, in communicate
+    return self._communicate(input)
+  File "/usr/local/lib/python2.7/subprocess.py", line 1098, in _communicate
+    stdout, stderr = self._communicate_with_poll(input)
+  File "/usr/local/lib/python2.7/subprocess.py", line 1152, in _communicate_with_poll
+    ready = poller.poll()
+KeyboardInterrupt
