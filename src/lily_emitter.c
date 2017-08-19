@@ -3728,6 +3728,12 @@ static void eval_tree(lily_emit_state *emit, lily_ast *ast, lily_type *expect)
         eval_lambda(emit, ast, expect);
     else if (ast->tree_type == tree_self)
         eval_self(emit, ast);
+    else {
+#ifdef OCTEON_DEBUG
+    /// Maybe a bad tree type isn't getting walked?
+    fprintf(stderr, "walk_tree: Unknown tree type %d.\n", ast->tree_type);
+#endif
+    }
 }
 
 /* Evaluate a tree with 'expect' sent for inference. If the tree does not return
