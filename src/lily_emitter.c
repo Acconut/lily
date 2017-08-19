@@ -2802,6 +2802,12 @@ static void emit_literal(lily_emit_state *emit, lily_ast *ast)
     lily_u16_write_4(emit->code, o_load_readonly, ast->literal_reg_spot,
             s->reg_spot, ast->line_num);
 
+#ifdef OCTEON_DEBUG
+    /// Wonder if String literals are somehow getting the type for ?.
+    fprintf(stderr, "emit_literal: resulting type has name %s, type ptr %p, cls ptr %p.\n",
+            ast->type->cls->name, ast->type, ast->type->cls);
+#endif
+
     ast->result = (lily_sym *)s;
 }
 
