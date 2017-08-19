@@ -1183,10 +1183,21 @@ static void perform_closure_transform(lily_emit_state *emit,
     uint16_t patch_stop = lily_u16_pos(emit->patches);
     uint16_t patch_iter = patch_start;
     uint16_t next_jump = lily_u16_get(emit->patches, patch_iter);
+#ifdef OCTEON_DEBUG
+    int oc_i = 0;
+#endif
 
     lily_ci_init(&ci, emit->code->data, iter_start, lily_u16_pos(emit->code));
     while (lily_ci_next(&ci)) {
         int output_start = 0;
+
+#ifdef OCTEON_DEBUG
+        oc_i++;
+        if (oc_i == 2000) {
+            /// Arbitrary number that no test should reach.
+            lily_raise_syn(emit->raiser, "perform_closure_transform: code iter shouldn't still be going.\n");
+        }
+#endif
 
         lily_opcode op = buffer[ci.offset];
         /* +1 to skip over the opcode itself. */

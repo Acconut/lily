@@ -215,6 +215,11 @@ int lily_ci_next(lily_code_iter *iter)
 
             iter->round_total = 2;
             break;
+#ifdef OCTEON_DEBUG
+        default:
+            /// This is a very bad sign of a deeper problem.
+            fprintf(stderr, "lily_ci_next: Invalid opcode %d.\n", *buffer);
+#endif
     }
 
     return 1;

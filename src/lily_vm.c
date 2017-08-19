@@ -2366,6 +2366,10 @@ void lily_vm_execute(lily_vm_state *vm)
                 lily_release_jump(vm->raiser);
                 return;
             default:
+#ifdef OCTEON_DEBUG
+    /// This should definitely not be happening.
+    fprintf(stderr, "lily_vm_execute: Bad opcode %d.\n", *code);
+#endif
                 return;
         }
     }
