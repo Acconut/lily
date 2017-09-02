@@ -2120,9 +2120,15 @@ static void push_literal(lily_parse_state *parser, lily_literal *lit)
         literal_cls = parser->symtab->string_class;
     else if (lit->class_id == LILY_ID_BYTESTRING)
         literal_cls = parser->symtab->bytestring_class;
-    else
+    else {
+#ifdef OCTEON_DEBUG
+        /// This is probably how ? is leaking to the emitter.
+        fprintf(stderr, "push_literal: Using the ? type for unknown class id %d.\n",
+                lit->class_id);
+#endif
         /* Impossible, but keeps the compiler from complaining. */
         literal_cls = parser->symtab->question_class;
+    }
 
     lily_es_push_literal(parser->expr, literal_cls->self_type, lit->reg_spot);
 }
